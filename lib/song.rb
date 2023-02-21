@@ -34,4 +34,9 @@ class Song
     # return the Ruby instance
     self
   end
+
+  def self.create(name:, album:)
+    song = Song.new(name: name, album: album)
+    song.save
+  end
 end
