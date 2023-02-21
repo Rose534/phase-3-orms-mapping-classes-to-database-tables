@@ -25,8 +25,13 @@ class Song
       VALUES (?, ?)
     SQL
 
+    # insert the song
     DB[:conn].execute(sql, self.name, self.album)
 
-  end
+    # get the song ID from the database and save it to the Ruby instance
+    self.id = DB[:conn].execute("SELECT last_insert_rowid() FROM songs")[0][0]
 
+    # return the Ruby instance
+    self
+  end
 end
